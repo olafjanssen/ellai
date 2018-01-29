@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Script.Serialization;
 using Microsoft.Kinect;
 
 namespace KinectForEllai
@@ -10,35 +11,32 @@ namespace KinectForEllai
     class Program
     {
 
-        private static Body[] bodies = null;
+        public static Body[] Bodies = null;
 
         // Get defaut KinectSensor (we assume only 1 Kinect is connected)
-        private static KinectSensor kinectSensor = KinectSensor.GetDefault();
-
-        // get the coordinate mapper
-        private static CoordinateMapper coordinateMapper = kinectSensor.CoordinateMapper;
-
+        private static readonly KinectSensor KinectSensor = KinectSensor.GetDefault();
+        
         static void Main(string[] args)
         {
           
             // get the depth (display) extents
-            FrameDescription frameDescription = kinectSensor.DepthFrameSource.FrameDescription;
+            FrameDescription frameDescription = KinectSensor.DepthFrameSource.FrameDescription;
 
             // get size of joint space
             int displayWidth = frameDescription.Width;
             int displayHeight = frameDescription.Height;
 
             // open the reader for the body frames
-            BodyFrameReader bodyFrameReader = kinectSensor.BodyFrameSource.OpenReader();
+            BodyFrameReader bodyFrameReader = KinectSensor.BodyFrameSource.OpenReader();
 
             // set the body frame reader event handler
             bodyFrameReader.FrameArrived += Reader_FrameArrived;
 
             // set IsAvailableChanged event notifier
-            kinectSensor.IsAvailableChanged += Sensor_IsAvailableChanged;
+            KinectSensor.IsAvailableChanged += Sensor_IsAvailableChanged;
 
             // open the sensor
-            kinectSensor.Open();
+            KinectSensor.Open();
 
 
             Console.ReadKey();
@@ -57,22 +55,24 @@ namespace KinectForEllai
             {
                 if (bodyFrame != null)
                 {
-                    if (bodies == null)
+                    if (Bodies == null)
                     {
-                        bodies = new Body[bodyFrame.BodyCount];
+                        Bodies = new Body[bodyFrame.BodyCount];
                     }
 
                     // The first time GetAndRefreshBodyData is called, Kinect will allocate each Body in the array.
                     // As long as those body objects are not disposed and not set to null in the array,
                     // those body objects will be re-used.
-                    bodyFrame.GetAndRefreshBodyData(bodies);
+                    bodyFrame.GetAndRefreshBodyData(Bodies);
                     dataReceived = true;
                 }
             }
 
             if (dataReceived)
             {
-                    foreach (Body body in bodies)
+                List<BodyMessage> bodyMessages = new List<BodyMessage>();
+                
+                foreach (Body body in Bodies)
                     {
                         
                         if (body.IsTracked)
@@ -84,12 +84,17 @@ namespace KinectForEllai
                         {
                             headPosition.Z = 0.1f;
                         }
-
-                        DepthSpacePoint depthSpacePoint = coordinateMapper.MapCameraPointToDepthSpace(headPosition);
-                        Console.WriteLine(body.TrackingId + ", " + (int)depthSpacePoint.X + ", " + (int)depthSpacePoint.Y);
-                    
+                        
+                            BodyMessage bodyMessage = new BodyMessage(body.TrackingId, headPosition.X, headPosition.Y, headPosition.Z);
+                            bodyMessages.Add(bodyMessage);
                         }
-                    }              
+                    }
+
+                if (bodyMessages.Count > 0)
+                {
+                    JavaScriptSerializer js = new JavaScriptSerializer();
+                    Console.WriteLine(js.Serialize(bodyMessages).ToLower());
+                }
             }
         }
 
