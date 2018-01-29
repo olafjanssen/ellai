@@ -9,8 +9,11 @@ The data will have the following format (using an example):
 
 ```json
 {
-    channel: "kinnectforellai", 
-    payload: [{id:"bodyId1", position:{x:0, y:0, z:0}},
-              {id:"bodyId2", position:{x:0, y:0, z:0}]
+    "channel": "kinnectforellai", 
+    "payload": [{"id": "bodyId1", "position": {"x": 0, "y": 0, "z": 0}},
+                {"id": "bodyId2", "position": {"x": 0, "y": 0, "z": 0}]
 }
 ```
+## Dependencies
+* [WebSocketSharp](https://github.com/sta/websocket-sharp)
+* Kinect SDK 2.0
