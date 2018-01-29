@@ -11,7 +11,7 @@ The data will have the following format (using an example):
 {
     "channel": "kinnectforellai", 
     "payload": [{"id": "bodyId1", "position": {"x": 0, "y": 0, "z": 0}},
-                {"id": "bodyId2", "position": {"x": 0, "y": 0, "z": 0}]
+                {"id": "bodyId2", "position": {"x": 0, "y": 0, "z": 0}}]
 }
 ```
 ## Dependencies
