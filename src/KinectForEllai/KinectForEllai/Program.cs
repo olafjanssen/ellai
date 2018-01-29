@@ -21,6 +21,7 @@ namespace KinectForEllai
             WebSocketHandler = new WebSocketHandler("localhost:8080", "kinectforellai");
 
             Console.ReadKey(true);
+            WebSocketHandler.Disconnect();
         }
 
         static void BodyUpdated(List<BodyMessage> bodyMessages)

@@ -24,7 +24,6 @@ wss.on('connection', function connection(ws) {
     
   ws.on('error', () => console.log('errored'));
 
-  //ws.send('something');
 });
 
 

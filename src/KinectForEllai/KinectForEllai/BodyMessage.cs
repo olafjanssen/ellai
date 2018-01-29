@@ -11,14 +11,14 @@ namespace KinectForEllai
     /// Stores the data for a single body that will serve as the output.
     /// </summary>
     class BodyMessage
-    {
-        public ulong Id;
-        public Vector3 Position;
+    {   
+        public ulong id;
+        public object position;
 
         public BodyMessage(ulong id, float posX, float posY, float posZ)
         {
-            this.Id = id;
-            Position = new Vector3(posX, posY, posZ);
+            this.id = id;
+            position = new {x = posX, y = posY, z = posZ};
         }
     }
 }
