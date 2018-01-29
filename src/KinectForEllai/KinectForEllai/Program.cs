@@ -11,6 +11,7 @@ namespace KinectForEllai
 {
     class Program
     {
+        private static readonly String defaultHost = "localhost:8080";
 
         public static KinectHandler KinectHandler = null; 
         public static WebSocketHandler WebSocketHandler = null;
@@ -18,8 +19,11 @@ namespace KinectForEllai
         static void Main(string[] args)
         {
             KinectHandler = new KinectHandler(BodyUpdated);
-            WebSocketHandler = new WebSocketHandler("localhost:8080", "kinectforellai");
 
+            // use first argument as the server host to connect with
+            String host = args.Length == 1 ? args[0] : defaultHost;
+            WebSocketHandler = new WebSocketHandler(host, "kinectforellai");
+            
             Console.ReadKey(true);
             WebSocketHandler.Disconnect();
         }
