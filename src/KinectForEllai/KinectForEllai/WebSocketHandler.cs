@@ -19,7 +19,7 @@ namespace KinectForEllai
         public WebSocketHandler(String host, String channel)
         {
             this._channel = channel;
-            _webSocket = new WebSocket("ws://" + host);
+            _webSocket = new WebSocket(host);
 
             _webSocket.OnError += (sender, e) => {
                Console.Error.WriteLine("WebSocketHandler: " + e.Message);

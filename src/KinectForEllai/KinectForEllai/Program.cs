@@ -11,7 +11,7 @@ namespace KinectForEllai
 {
     class Program
     {
-        private static readonly String defaultHost = "localhost:8080";
+        private static readonly String defaultHost = "ws://localhost:8080";
 
         public static KinectHandler KinectHandler = null; 
         public static WebSocketHandler WebSocketHandler = null;

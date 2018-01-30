@@ -3,7 +3,7 @@
  */
 var WebsocketHandler = function(host, channel) {
         
-        var socket = new WebSocket("ws://" + host, "protocolOne");
+        var socket = new WebSocket(host, "protocolOne");
         
         socket.onopen = function(event){
           console.log("WebsocketHandler: Connected");  
