@@ -6,17 +6,34 @@
     <meta charset="utf-8">
     <script src="js/websockethandler.js"></script>
 </head>
-
-<body>
-</body>
-<script>
-    
-    var webSocketHandler = new WebsocketHandler('localhost:8080', 'kinectforellai');
-    
-    webSocketHandler.onMessage = function(channel, payload) {
-        console.log(channel, payload);
+<style>
+    html,body {
+        background-color: black;
+        margin: 0;
+        padding: 0;
     }
     
+    #image {
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: absolute;
+        display: block;
+        height: 100%;
+        width: 100%;
+    }
+</style>
+
+<body>
+    <div id="image"></div>
+</body>
+
+<script>
+    var webSocketHandler = new WebsocketHandler('localhost:8080', 'kinectforellai');
+
+    webSocketHandler.onMessage = function(channel, payload) {
+        console.log(channel, payload);
+        document.getElementById('image').style.backgroundImage = 'url(' + payload.url + ')';
+    }
 </script>
 
 </html>
