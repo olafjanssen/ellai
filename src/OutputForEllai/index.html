@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>OutputForEllai</title>
+    <meta charset="utf-8">
+    <script src="js/websockethandler.js"></script>
+</head>
+
+<body>
+</body>
+<script>
+    
+    var webSocketHandler = new WebsocketHandler('localhost:8080', 'kinectforellai');
+    
+    webSocketHandler.onMessage = function(channel, payload) {
+        console.log(channel, payload);
+    }
+    
+</script>
+
+</html>
