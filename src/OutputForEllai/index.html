@@ -28,7 +28,7 @@
 </body>
 
 <script>
-    var webSocketHandler = new WebsocketHandler('ws://localhost:8080', 'kinectforellai');
+    var webSocketHandler = new WebsocketHandler('ws://localhost:8080', 'outputforellai');
 
     webSocketHandler.onMessage = function(channel, payload) {
         console.log(channel, payload);
