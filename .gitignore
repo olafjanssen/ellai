@@ -82,6 +82,3 @@ crashlytics-build.properties
 fabric.properties
 .idea/
 /NeuralNet/NeuralNet.iml
-.gitignore
-log/
-package-lock.json
