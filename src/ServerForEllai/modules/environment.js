@@ -39,6 +39,8 @@ const Environment = function () {
     function newAction(action) {
         state.action = action;
 
+        console.log(imageUrls[action % (imageUrls.length)])
+
         // log / broadcast new state
         if (ret.onNewAction) {
             ret.onNewAction({
@@ -82,7 +84,7 @@ const Environment = function () {
         }
     }
 
-    var ret = {
+    let ret = {
         newSensorInput: newSensorInput,
         newAction: newAction,
         init: init,

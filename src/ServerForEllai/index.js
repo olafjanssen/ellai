@@ -18,7 +18,7 @@ webSocketHandler.onMessage = function (channel, payload) {
             environment.newSensorInput('kinect', payload);
             break;
         case 'action':
-            environment.newAction(payload);
+            environment.newAction(payload.action);
             break;
     }
 };
@@ -31,5 +31,6 @@ environment.onNewState = function (state) {
 };
 
 environment.onNewAction = function(action){
+    console.log('PAYLOAD', action);
     webSocketHandler.send('outputforellai', action);
 };

@@ -32,7 +32,9 @@
 
     webSocketHandler.onMessage = function(channel, payload) {
         console.log(channel, payload);
-        document.getElementById('image').style.backgroundImage = 'url(' + payload.url + ')';
+        if (channel === 'outputforellai') {
+            document.getElementById('image').style.backgroundImage = 'url(' + payload.url + ')';
+        }
     }
 </script>
 
