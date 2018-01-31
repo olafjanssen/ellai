@@ -13,6 +13,31 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/NeuralNet/README.md">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/NeuralNet/neural_network.py">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/NeuralNet/requirements.txt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/NeuralNet/test_input.py">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../archief/2017-2nj/verrucktewoche/TensorFlow-Examples/examples/3_NeuralNetworks/neural_network.py">
+          <value>
+            <set />
+          </value>
+        </entry>
       </map>
     </option>
   </component>
