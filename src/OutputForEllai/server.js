@@ -10,7 +10,7 @@ const wss = new WebSocket.Server({
     port: 8080
 });
 
-var sockets = [];
+const sockets = [];
 
 wss.on('connection', function connection(ws) {
     sockets.push(ws);
@@ -32,7 +32,7 @@ wss.on('connection', function connection(ws) {
 
 });
 
-var imageUrls = [
+const imageUrls = [
   'https://s-i.huffpost.com/gen/1335607/images/o-MESMERIZING-VIEWS-facebook.jpg',
     'https://thumbs.dreamstime.com/b/mesmerizing-beautiful-eyes-15385134.jpg',
     'https://scontent-ams3-1.xx.fbcdn.net/v/t1.0-9/18301200_1948269545457332_7138887670052306574_n.jpg?oh=b86a9aba5653a4f4814a25974f7d34ab&oe=5B1FEB87',
@@ -65,8 +65,8 @@ setInterval(function () {
  */
 function showKinectMessage(payload) {
     
-    var body = payload[0];
-    var rId = 0;
+    const body = payload[0];
+    let rId = 0;
     if (body.position.x < 0) {
         if (body.position.y < 0) {
             rId = 0;

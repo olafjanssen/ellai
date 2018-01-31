@@ -15,6 +15,7 @@ namespace KinectForEllai
         private static readonly KinectSensor KinectSensor = KinectSensor.GetDefault();
 
         public static Body[] Bodies = null;
+
         private Action<List<BodyMessage>> BodyUpdated;
 
         public KinectHandler(Action<List<BodyMessage>> bodyUpdated)
