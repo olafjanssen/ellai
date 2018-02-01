@@ -13,6 +13,31 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/Agent/environment_interface.py">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/Agent/interface.py">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/Agent/reinforcement_learning.py">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/Agent/requirements.txt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/Agent/td_learning.py">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/NeuralNet/README.md">
           <value>
             <set />
@@ -34,6 +59,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/../../../archief/2017-2nj/verrucktewoche/TensorFlow-Examples/examples/3_NeuralNetworks/neural_network.py">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="/a.dummy">
           <value>
             <set />
           </value>
