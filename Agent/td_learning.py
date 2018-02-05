@@ -1,5 +1,6 @@
 import random
 import time
+import logging
 from environment_interface import environment_interface
 # === TD(0) ===
 # Initialize V(s) arbitrarily, pi to the policy to be evaluated
