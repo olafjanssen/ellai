@@ -15,7 +15,6 @@ hidden_neurons = 256
 output_neurons = 10
 hidden_layers = 5
 
-
 # Inputdata
 input_data = tf.placeholder("float", [None, input_neurons])
 output_data = tf.placeholder("float", [None, output_neurons])

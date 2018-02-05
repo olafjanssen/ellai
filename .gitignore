@@ -81,5 +81,4 @@ crashlytics.properties
 crashlytics-build.properties
 fabric.properties
 .idea/
-/NeuralNet/NeuralNet.iml
-/Agent/Agent.iml
+*.iml
