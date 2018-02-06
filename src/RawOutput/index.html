@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>OutputForEllai</title>
+    <meta charset="utf-8">
+    <script src="js/websockethandler.js"></script>
+</head>
+<style>
+    html,body {
+        background-color: black;
+        margin: 0;
+        padding: 0;
+    }
+    
+    #image {
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: absolute;
+        display: block;
+        height: 100%;
+        width: 100%;
+    }
+</style>
+
+<body>
+    <div id="image"></div>
+
+    <canvas id="canvas" width="900" height="600"></canvas>
+</body>
+
+<script>
+
+    var canvas = document.getElementById('canvas');
+    var ctx = canvas.getContext('2d');
+    var w=900,h=600;
+
+    // var webSocketHandler = new WebsocketHandler('ws://localhost:8080', 'outputforellai');
+    var webSocketHandler = new WebsocketHandler('ws://localhost:8080', 'outputforellai');
+
+    webSocketHandler.onMessage = function(channel, payload) {
+        console.log(channel, payload);
+        if (channel === 'state') {
+            payload.positions.forEach(function(body){
+                ctx.fillStyle = "rgba(255,255,255,1)";
+                ctx.fillRect( w/2 + body.position.x * w/2, h/2 + body.position.y * h/2, 4, 4);
+            });
+        }
+    }
+</script>
+
+</html>
