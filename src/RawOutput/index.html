@@ -41,7 +41,7 @@
     setInterval(function(){
         ctx.fillStyle = "rgba(0,0,0,0.01)";
         ctx.fillRect(0, 0, canvas.width, canvas.height);
-    }, 50);
+    }, 200);
 
     webSocketHandler.onMessage = function(channel, payload) {
         console.log(channel, payload);
