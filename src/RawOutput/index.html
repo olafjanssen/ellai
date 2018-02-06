@@ -36,7 +36,12 @@
     var w=900,h=600;
 
     // var webSocketHandler = new WebsocketHandler('ws://localhost:8080', 'outputforellai');
-    var webSocketHandler = new WebsocketHandler('ws://localhost:8080', 'outputforellai');
+    var webSocketHandler = new WebsocketHandler('wss://ws.2of1.nl/ellai/', 'outputforellai');
+
+    setInterval(function(){
+        ctx.fillStyle = "rgba(0,0,0,0.01)";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+    }, 50);
 
     webSocketHandler.onMessage = function(channel, payload) {
         console.log(channel, payload);
