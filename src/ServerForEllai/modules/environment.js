@@ -5,8 +5,7 @@
  */
 
 const Environment = function () {
-    let state = null,
-        timerId = null;
+    let state = null;
 
     const imageUrls = [
         'https://s-i.huffpost.com/gen/1335607/images/o-MESMERIZING-VIEWS-facebook.jpg',
@@ -24,10 +23,10 @@ const Environment = function () {
         switch (type) {
             case 'kinect':
                 state.positions = data;
+                broadcastState();
                 break;
             default:
                 break;
-
         }
     }
 
@@ -55,27 +54,18 @@ const Environment = function () {
      * @param {Number} interval     the timestep interval in ms
      */
     function init(interval) {
-        if (timerId) {
-            clearInterval(timerId)
-        }
-
         // reset environment
         state = {
             tick: 0,
             action: null,
             timestamp: new Date().getTime()
         };
-
-        setInterval(function () {
-            update();
-        }, interval);
     }
 
     /**
-     * Update to a new tick
+     * Broadcast state to the world
      */
-    function update() {
-        state.tick++;
+    function broadcastState() {
         state.timestamp = new Date().getTime();
 
         // log / broadcast new state
