@@ -26,11 +26,11 @@ webSocketHandler.onMessage = function (channel, payload) {
 environment.init(100);
 
 environment.onNewState = function (type, state) {
-    logger.log(state);
+    logger.log({channel: type, payload: state});
     webSocketHandler.send(type, state);
 };
 
-environment.onNewAction = function(action){
+environment.onNewAction = function (action) {
     console.log('PAYLOAD', action);
     webSocketHandler.send('outputforellai', action);
 };
