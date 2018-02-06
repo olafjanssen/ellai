@@ -5,7 +5,8 @@
  */
 
 const Environment = function () {
-    let state = null;
+    let state = null,
+        bodies = [];
 
     const imageUrls = [
         'https://s-i.huffpost.com/gen/1335607/images/o-MESMERIZING-VIEWS-facebook.jpg',
@@ -22,12 +23,40 @@ const Environment = function () {
     function newSensorInput(type, data) {
         switch (type) {
             case 'kinect':
-                state.positions = data;
-                broadcastState();
+                handleKinectInput(data);
                 break;
             default:
                 break;
         }
+    }
+
+    function handleKinectInput(data){
+        let stateIds = [];
+        data.forEach(function(body){
+            stateIds.push(body.id);
+           if (bodies.indexOf(body.id) === -1){
+               bodies.push(body.id);
+               // log / broadcast new state
+               if (ret.onNewState) {
+                   ret.onNewState('body-enters', {id: body.id});
+               }
+           }
+        });
+
+        bodies.forEach(function(body, idx){
+            if (stateIds.indexOf(body) === -1) {
+                console.log(bodies, stateIds, body, stateIds.indexOf(body));
+                bodies.splice(idx, 1);
+                // log / broadcast new state
+                if (ret.onNewState) {
+                    ret.onNewState('body-leaves', {id: body});
+                }
+
+            }
+        });
+
+        state.positions = data;
+        broadcastState();
     }
 
     /**
@@ -66,11 +95,12 @@ const Environment = function () {
      * Broadcast state to the world
      */
     function broadcastState() {
+        state.tick++;
         state.timestamp = new Date().getTime();
 
         // log / broadcast new state
         if (ret.onNewState) {
-            ret.onNewState(state);
+            ret.onNewState('state', state);
         }
     }
 

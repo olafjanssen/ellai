@@ -25,9 +25,9 @@ webSocketHandler.onMessage = function (channel, payload) {
 
 environment.init(100);
 
-environment.onNewState = function (state) {
+environment.onNewState = function (type, state) {
     logger.log(state);
-    webSocketHandler.send('state', state);
+    webSocketHandler.send(type, state);
 };
 
 environment.onNewAction = function(action){

@@ -31,7 +31,10 @@ ws.on('open', function open() {
             }
         });
 
-        ws.send(JSON.stringify({channel: 'kinectforellai', payload: state}));
+        if (state.length>0) {
+            console.log(state);
+            ws.send(JSON.stringify({channel: 'kinectforellai', payload: state}));
+        }
     }, 10);
 });
 
