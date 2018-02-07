@@ -1,7 +1,6 @@
 import random
 import time
-import logging
-from environment_interface import environment_interface
+from environmentinterface import EnvironmentInterface
 # === TD(0) ===
 # Initialize V(s) arbitrarily, pi to the policy to be evaluated
 # Repeat (for each episode)
@@ -48,6 +47,11 @@ def get_states():
         # but for now just print
         print(state)
 
-environment = environment_interface('wss://ws.2of1.nl/ellai/')
-get_states()
-get_states()
+def begin_episode():
+    print('begin')
+
+def end_episode():
+    get_states()
+
+environment = EnvironmentInterface('wss://ws.2of1.nl/ellai/', begin_episode)
+input('Waiting...\n')
